@@ -1,9 +1,9 @@
 import React, { useContext } from "react";
-import MyContext from "./context.js";
+import { FruitsContext } from "./context.js";
 import Fruit from "./fruit.js";
 
 function MyList(param) {
-    const { myFruits, setMyFruits } = useContext(MyContext);
+    const { myFruits, setMyFruits } = useContext(FruitsContext);
     const addFruits = () => {
         console.log("Adding fruits");
         setMyFruits([...myFruits, `fruits ${myFruits.length}`]);
@@ -15,16 +15,23 @@ function MyList(param) {
         setMyFruits(prevFruits);
     };
 
+    const redIndices = [2, 4];
+
     return (
         <div>
             <h3>List</h3>
             <button onClick={addFruits}>Add fruits</button>
             <button onClick={removeFruits}>Remove fruits</button>
-            <hr/>
+            <hr />
             <div>
                 {myFruits &&
-                    myFruits.map((item, _index) => {
-                        return <Fruit fruit={item}></Fruit>;
+                    myFruits.map((item, index) => {
+                        return (
+                            <Fruit
+                                fruit={item}
+                                fruitIndex={index}
+                            ></Fruit>
+                        );
                     })}
             </div>
         </div>

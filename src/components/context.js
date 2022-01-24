@@ -1,8 +1,13 @@
 import React from "react";
 
-const MyContext = React.createContext({
+const FruitsContext = React.createContext({
     myFruits: [],
     setMyFruits: (fruits) => {}
 });
 
-export default MyContext;
+const GreenContext = React.createContext({
+    green: [],
+    setGreen: (green) => {}
+})
+
+export { FruitsContext, GreenContext };
